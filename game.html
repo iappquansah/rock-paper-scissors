@@ -8,10 +8,49 @@
   <button onclick=" playGame('rock') ">Rock</button>
   <button onclick=" playGame('paper') ">Paper</button>
   <button onclick=" playGame('scissors') ">scissors</button>
+  <button onclick="
+  score.loses = 0;
+  score.ties = 0;
+  score.wins = 0;
+  localStorage.removeItem('score');
+  ">Reset Scores</button>
   
 </body>
 <script>
   // alert("Welcome")
+
+  let score = JSON.parse(localStorage.getItem("score")) || {
+    wins: 0,
+    loses : 0,
+    ties : 0};
+
+  // if (score === null) {
+  //   score = {
+  //   wins: 0,
+  //   loses : 0,
+  //   ties : 0}
+
+  // };
+  // if (!score) {
+  //   score = {
+  //   wins: 0,
+  //   loses : 0,
+  //   ties : 0}
+
+  // };
+
+
+  
+  
+  // let score = {
+  //   wins: 0,
+  //   loses : 0,
+  //   ties : 0
+
+  // };
+  
+
+
   function pickComputerMove(){
     let computerMove = "";
     let computerMoveNumber = Math.floor(Math.random() * 3);
@@ -25,18 +64,30 @@
     return computerMove;
 
     console.log(computerMove)
+    
   }
 
   function playGame(userMove){
-    computerMove = pickComputerMove()
-    pickComputerMove()
+    const computerMove = pickComputerMove()
     let result = "";
     if (computerMove === userMove){
-      console.log(`It's a tie \nYou chose ${userMove} and Computer chose ${computerMove} `)
+      result - "It's a tie"
+      score.ties += 1
 
-    } else if ((computerMove=== "rock" && userMove === "scissors") ||(computerMove=== "scissors" && userMove === "paper") ||(computerMove=== "paper" && userMove === "rock" )){
-      console.log(`You lost \nYou chose ${userMove} and Computer chose ${computerMove} `)
-    } else{console.log(`You won \nYou chose ${userMove} and Computer chose ${computerMove} `)}
+    }else if ((computerMove=== "rock" && userMove === "scissors") ||(computerMove=== "scissors" && userMove === "paper") ||(computerMove=== "paper" && userMove === "rock" )){
+      result = "You lost"
+      score.loses += 1
+
+    }else{ result = "You won"
+      score.wins += 1
+    }
+
+    
+    alert(`${result} \nYou chose ${userMove} and Computer chose ${computerMove} 
+Wins: ${score.wins} Loses: ${score.loses} Ties: ${score.ties}`)
+    
+  localStorage.setItem("score", JSON.stringify(score))
+
   }
 
   pickComputerMove();
