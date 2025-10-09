@@ -5,53 +5,32 @@
 
 </head>
 <body>
+  <p>Rock Paper Scissors</p>
   <button onclick=" playGame('rock') ">Rock</button>
   <button onclick=" playGame('paper') ">Paper</button>
   <button onclick=" playGame('scissors') ">scissors</button>
+  <p class="js-result"></p>
+  <p class="js-score"></p>
   <button onclick="
   score.loses = 0;
   score.ties = 0;
   score.wins = 0;
   localStorage.removeItem('score');
-  ">Reset Scores</button>
+  updateScoreElement();
+  ">Reset Scores</button> 
+  
+
   
 </body>
 <script>
-  // alert("Welcome")
 
   let score = JSON.parse(localStorage.getItem("score")) || {
     wins: 0,
     loses : 0,
     ties : 0};
 
-  // if (score === null) {
-  //   score = {
-  //   wins: 0,
-  //   loses : 0,
-  //   ties : 0}
-
-  // };
-  // if (!score) {
-  //   score = {
-  //   wins: 0,
-  //   loses : 0,
-  //   ties : 0}
-
-  // };
-
-  //destructing
-
-
+  updateScoreElement();
   
-  
-  // let score = {
-  //   wins: 0,
-  //   loses : 0,
-  //   ties : 0
-
-  // };
-  
-
 
   function pickComputerMove(){
     let computerMove = "";
@@ -65,15 +44,24 @@
     else{computerMove ="scissors";}
     return computerMove;
 
-    console.log(computerMove)
+    // console.log(computerMove)
     
   }
 
+  function updateResultElement(result,userMove,computerMove){
+    document.querySelector('.js-result').innerHTML = (`${result} \n
+    You chose ${userMove} and Computer chose ${computerMove}`);
+  }
+
+  function updateScoreElement(){
+    document.querySelector('.js-score').innerHTML = (`Wins: ${score.wins} Loses: ${score.loses} Ties: ${score.ties}`);
+  }
+  
   function playGame(userMove){
     const computerMove = pickComputerMove()
     let result = "";
     if (computerMove === userMove){
-      result - "It's a tie"
+      result = "It's a tie"
       score.ties += 1
 
     }else if ((computerMove=== "rock" && userMove === "scissors") ||(computerMove=== "scissors" && userMove === "paper") ||(computerMove=== "paper" && userMove === "rock" )){
@@ -83,10 +71,8 @@
     }else{ result = "You won"
       score.wins += 1
     }
-
-    
-    alert(`${result} \nYou chose ${userMove} and Computer chose ${computerMove} 
-Wins: ${score.wins} Loses: ${score.loses} Ties: ${score.ties}`)
+    updateResultElement(result,userMove,computerMove);
+    updateScoreElement();
     
   localStorage.setItem("score", JSON.stringify(score))
 
