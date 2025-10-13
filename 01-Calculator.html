@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html >
+<head>
+  
+  <title>Calculator</title>
+  <link rel="stylesheet" href="styles/01-Calculator.css">
+</head>
+<body>
+  <p class="js-display display"></p>
+  <button class="js-numberButton numberButton"> 1 </button>
+  <button class="js-numberButton numberButton"> 2 </button>
+  <button class="js-numberButton numberButton"> 3 </button>
+  <button onclick="" class="js-symbolButton symbolButton"> + </button><br>
+  <button class="js-numberButton numberButton"> 4 </button>
+  <button class="js-numberButton numberButton"> 5 </button>
+  <button class="js-numberButton numberButton"> 6 </button>
+  <button onclick="" class="js-symbolButton symbolButton"> - </button><br>
+  <button class="js-numberButton numberButton"> 7 </button>
+  <button class="js-numberButton numberButton"> 8 </button>
+  <button class="js-numberButton numberButton"> 9 </button>
+  <button onclick="" class="js-symbolButton symbolButton"> * </button><br>
+  <button class="js-numberButton numberButton"> 0 </button>
+  <button onclick="" class="js-. symbolButton2"> . </button>
+  <button onclick="" class="js-= symbolButton2"> = </button>
+  <button onclick="" class="js-symbolButton symbolButton"> / </button><br>
+  <button onclick="" class="js-clear clearButton"> Clear </button>
+  <script>
+    let currentNumber = "";
+    let previousNumber = "";
+    let operator = "";
+    let result = 0;
+    let lastOperatorpressed = false;
+
+    function setUpNumberButtons(){
+    const buttons = document.querySelectorAll('.js-numberButton')
+    buttons.forEach(button => { button.addEventListener('click', handleNumberClicked)
+    
+      
+    });}
+
+    function display(value){
+      document.querySelector('.js-display').innerHTML += value
+    }
+    function handleNumberClicked(){
+      const value = Number(event.target.textContent.trim())
+      
+
+      if(lastOperatorpressed){
+        currentNumber = '';
+        lastOperatorpressed = false;
+      }
+      currentNumber += num;
+      display(currentNumber);
+
+      // localStorage.setItem('display',JSON.stringify(value))
+    }
+
+    function setUpSymbolButtons(){
+      const buttons = document.querySelectorAll('.js-symbolButton')
+      buttons.forEach(button => {button.addEventListener('click',handleOperatorCicked)})
+    }
+    function handleOperatorCicked(){
+      const operator = event.target.textContent
+      if (currentNumber==="")return
+
+      if (previousNumber && operator){
+        Calculate();
+      }else{
+        result= Number(currentNumber)
+      }
+      lastOperatorpressed= true;
+
+      document.querySelector('.js-display').innerHTML += operator 
+    }
+    function Calculate(){
+      const num2 = Number(currentNumber);
+      if(operator=== "+"){
+        result += num2;
+      }else if(operator=== "-"){
+        result -= num2;
+      }else if(operator=== "/"){
+        result /= num2;
+      }else if(operator=== "*"){
+        result *= num2;
+      }
+      display(result)
+
+    }
+    setUpNumberButtons();
+    setUpSymbolButtons();
+    
+    
+
+  </script>
+</body>
+</html>

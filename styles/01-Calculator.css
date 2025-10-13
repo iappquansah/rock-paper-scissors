@@ -1,0 +1,41 @@
+body{
+  background-color: black;
+  font-family: Arial;
+  
+
+}
+.numberButton,
+.symbolButton,
+.symbolButton2,
+.clearButton{
+  border: none;
+  color: white;
+  height: 60px;
+  width: 60px;
+  font-size: 25px;
+  margin: 8px 3px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.numberButton{
+  background-color:rgb(51, 51, 51) ;
+}
+.symbolButton{
+  background-color:rgb(254, 160, 10) ;
+  
+}
+.symbolButton2{
+  background-color:rgb(51, 51, 51) ;
+
+}
+.clearButton{
+  background-color:rgb(51, 51, 51) ;
+  font-size: 18px;
+}
+.display{
+  color: white;
+  font-size: 40px;
+  margin-left: 10px;
+  margin-top: 0px;
+  margin-bottom: 15px;
+}
