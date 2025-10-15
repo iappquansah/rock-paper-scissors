@@ -6,24 +6,31 @@
 </head>
 <body>
   <script>
-    const object ={
-      message : "Good job!",
-      price : 450
-    };
+    // const object ={
+    //   message : "Good job!",
+    //   price : 450
+    // };
     // const message = object.message;
-    const {message, price} = object;
-    console.log(message,price);
+    // const {message, price} = object;
+    // console.log(message,price);
 
-    object2 = {
-      // message : message,
-      message,
-      method (){
-        console.log("method")
-      }
+    // object2 = {
+    //   // message : message,
+    //   message,
+    //   method (){
+    //     console.log("method")
+    //   }
 
-    };
-    console.log(object2)
-    object2.method()
+    // };
+    // console.log(object2)
+    // object2.method()
+
+    todo = ['make dinner', 'sleep for awhile','watch youtube']
+    
+    todo.forEach(function(value, index){
+      console.log(value)
+      console.log(index)
+    });
 
   </script>
   

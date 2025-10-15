@@ -1,0 +1,40 @@
+body{
+  font-family: Arial;
+}
+.todoName,
+.todoDueDate
+{
+  font-size: 15px;
+  padding: 5px;
+  height: 25px;
+  margin-right: 5px;
+}
+.addButton,
+.deleteButton{
+  color: white;
+  border : none;
+  width: 90px;
+  padding: 10px ;
+  height: 40px;
+  font-size: 15px;
+  cursor: pointer;
+}
+.addButton{
+   background-color: rgb(57, 128, 57);
+}
+.deleteButton{
+  background-color: rgb(142, 53, 53);
+}
+
+.gridDisplay{
+  display: grid;
+  grid-template-columns: 200px 187px 100px;
+  column-gap: 10px;
+  row-gap: 10px;
+}
+/* .gridDisplay div{
+ margin-top: 10px;
+} */
+.input-todo-grid{
+margin-bottom: 10px;
+}
